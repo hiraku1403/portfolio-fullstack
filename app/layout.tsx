@@ -14,24 +14,25 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    "https://seu-portfolio.vercel.app",
+    "https://portfolio-matheus-fullstack.vercel.app/",
   ),
 
   title: {
     default:
-      "Matheus Henn | Desenvolvedor Frontend & Analista de Dados",
+      "Matheus Henn | Desenvolvedor Full Stack Python/PHP & Analista de Dados",
 
     template:
       "%s | Matheus Henn",
   },
 
   description:
-    "Portfólio de Matheus Henn — Desenvolvedor Frontend, Analista de Dados e profissional de Marketing Digital. Especialista em React, Next.js, JavaScript, SEO, Analytics e estratégias digitais.",
+    "Portfólio de Matheus Henn — Desenvolvedor Full Stack Python/PHP, Analista de Dados e profissional de Marketing Digital. Especialista em Python, PHP, React, Next.js, JavaScript, SEO, Analytics e estratégias digitais.",
 
   keywords: [
     "Matheus Henn",
-    "Desenvolvedor Frontend",
-    "Desenvolvedor React",
+    "Desenvolvedor Full Stack",
+    "Desenvolvedor Python",
+    "Desenvolvedor PHP",
     "Desenvolvedor Next.js",
     "Analista de Dados",
     "Analista de SEO",
@@ -56,10 +57,10 @@ export const metadata: Metadata = {
 
     locale: "pt_BR",
 
-    url: "https://seu-portfolio.vercel.app",
+    url: "https://portfolio-matheus-fullstack.vercel.app/",
 
     title:
-      "Matheus Henn | Desenvolvedor Frontend & Analista de Dados",
+      "Matheus Henn | Desenvolvedor Full Stack Python/PHP & Analista de Dados",
 
     description:
       "Portfólio profissional de Matheus Henn, com experiência em desenvolvimento web, análise de dados, SEO e marketing digital.",

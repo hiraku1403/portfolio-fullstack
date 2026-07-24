@@ -3,7 +3,7 @@ export const profile = {
 
   shortName: "Matheus Henn",
 
-  role: "Frontend Developer",
+  role: "Full Stack Developer",
 
   location: "São Paulo, SP",
 

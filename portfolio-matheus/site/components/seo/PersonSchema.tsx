@@ -10,13 +10,13 @@ export function PersonSchema() {
     name: profile.name,
 
     jobTitle:
-      "Desenvolvedor Frontend e Analista de Dados",
+      "Desenvolvedor Full Stack Python/PHP e Analista de Dados",
 
     email:
       `mailto:${profile.email}`,
 
     url:
-      "https://seu-portfolio.vercel.app",
+      "https://portfolio-matheus-fullstack.vercel.app/",
 
     sameAs: [
       profile.social.linkedin,
