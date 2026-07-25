@@ -14,19 +14,21 @@ export interface Experience {
 
 export const experience: Experience[] = [
   {
-    company: "VALCANN",
+    company: "Freelancer / Full Stack",
 
     location: "São Paulo, SP",
 
-    period: "Mai/2025 – Atual",
+    period: "Set/2025 – Atual",
 
-    role: "Desenvolvedor Frontend e Python",
+    role: "Desenvolvedor Full Stack / Analista de Dados",
 
     description:
-      "Startup de tecnologia Cloud com atuação em desenvolvimento frontend, manutenção de aplicações web e otimização de SEO.",
+      "Desenvolvimento full stack e análise de dados, criação de APIs, manutenção de aplicações web e criação de agentes de IA.",
 
     highlights: [
-      "Manutenção do site institucional utilizando Next.js e Python.",
+      "Manutenção do site institucional utilizando Next.js e PHP.",
+      "Criação de agentes de IA para automação de processos, análise de dados e suporte à tomada de decisões.",
+      "Machine Learning e análise de dados utilizando Python, Pandas, NumPy e Matplotlib.",
       "Otimização de boas práticas de SEO, resultando em aumento de 35% na taxa de cliques da busca orgânica.",
       "Gestão de controle de versão utilizando GitHub.",
       "Atuação utilizando a metodologia ágil Scrum.",
@@ -69,7 +71,7 @@ export const experience: Experience[] = [
 
     highlights: [
       "Desenvolvimento de sites e portais com foco em experiência do usuário.",
-      "Aplicação de HTML, CSS e JavaScript alinhados às melhores práticas de SEO e rastreamento analítico.",
+      "Aplicação de React e Next.js alinhados às melhores práticas de SEO e rastreamento analítico.",
       "Produção de relatórios de desempenho digital e sugestões de otimização baseadas em dados.",
       "Participação na definição de premissas de linguagem e estratégia digital para projetos web de diferentes segmentos.",
     ],

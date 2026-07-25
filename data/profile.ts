@@ -13,7 +13,7 @@ export const profile = {
 
   objective: "Desenvolvedor Frontend",
 
-  bio: "Profissional formado em Ciências da Computação pela Universidade La Salle Canoas, com experiência profissional em SEO, desenvolvimento Web e de sistemas com HTML, CSS e JavaScript, além da concepção de estratégias de marketing digital.",
+  bio: "Desenvolvedor Full Stack com experiência profissional em React, Next.js, Python, PHP e análise de dados. Especialista em otimização de SEO, performance digital e integração de Agentes de IA para automação de processos e suporte à tomada de decisões.",
 
   description:
     "Atuo na criação de experiências digitais modernas, performáticas e orientadas a resultados, utilizando tecnologias como React, Next.js, JavaScript, Python e ferramentas de análise.",

@@ -29,7 +29,7 @@ export const education: Education[] = [
 
     icon: Laptop,
 
-    status: "Em andamento",
+    status: "Concluído",
   },
 
   {
@@ -40,7 +40,7 @@ export const education: Education[] = [
       "Formação Profissional em Desenvolvimento Backend com Python",
 
     period:
-      "Dez/2025 – Nov/2026",
+      "Dez/2025 – Out/2026",
 
     description:
       "Formação voltada ao desenvolvimento backend utilizando Python e conceitos de construção de aplicações e sistemas.",
@@ -70,7 +70,7 @@ export const education: Education[] = [
 
   {
     institution:
-      "Universidade La Salle Canoas",
+      "Faculdade Pastor Dohms",
 
     course:
       "Bacharelado em Ciência da Computação",

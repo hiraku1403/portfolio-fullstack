@@ -19,7 +19,7 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Desenvolvimento Web",
+    title: "Desenvolvimento Full Stack",
 
     description:
       "Construção de interfaces, aplicações e experiências digitais modernas.",
@@ -27,14 +27,15 @@ export const skillCategories: SkillCategory[] = [
     icon: Code2,
 
     skills: [
-      "HTML",
-      "CSS",
+      "REACT",
+      "NEXT.JS",
       "JavaScript",
-      "React.js",
-      "Next.js",
+      "Python",
+      "FastAPI",
       "Vue.js",
-      "Nuxt.js",
-      "WordPress",
+      "Django",
+      "AICrew",
+      "N8N",
     ],
   },
 
@@ -58,19 +59,19 @@ export const skillCategories: SkillCategory[] = [
   },
 
   {
-    title: "Dados & Analytics",
+    title: "Agentes de IA & Automação",
 
     description:
-      "Uso de dados para gerar insights e apoiar decisões estratégicas.",
+      "Criação e integração de agentes de IA para automação de processos e análise de dados.",
 
     icon: Database,
 
     skills: [
       "Python",
       "SQL",
-      "Análise de Dados",
-      "Dashboards",
-      "Métricas Digitais",
+      "Machine Learning",
+      "LLMs",
+      "Métricas e KPIs",
     ],
   },
 

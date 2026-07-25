@@ -16,7 +16,7 @@ export function Skills() {
         <SectionHeading
           eyebrow="Competências"
           title="Uma combinação de tecnologia, dados e estratégia."
-          description="Minha experiência transita entre desenvolvimento web, análise de dados, SEO, marketing digital e gestão de projetos."
+          description="Minha experiência transita entre desenvolvimento full stack, análise de dados, SEO, marketing digital e gestão de projetos."
         />
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

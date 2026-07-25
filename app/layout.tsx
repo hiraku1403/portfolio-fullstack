@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Portfólio de Matheus Henn — Desenvolvedor Full Stack Python/PHP, Analista de Dados e profissional de Marketing Digital. Especialista em Python, PHP, React, Next.js, JavaScript, SEO, Analytics e estratégias digitais.",
+    "Portfólio de Matheus Henn — Desenvolvedor Full Stack Python/PHP, Analista de Dados e profissional de Marketing Digital. Especialista em Python, PHP, React, Next.js, JavaScript, SEO, Agentes de IA.",
 
   keywords: [
     "Matheus Henn",
@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     "Next.js",
     "Google Analytics",
     "SEO",
+    "Agentes de IA",
   ],
 
   authors: [
@@ -63,7 +64,7 @@ export const metadata: Metadata = {
       "Matheus Henn | Desenvolvedor Full Stack Python/PHP & Analista de Dados",
 
     description:
-      "Portfólio profissional de Matheus Henn, com experiência em desenvolvimento web, análise de dados, SEO e marketing digital.",
+      "Portfólio profissional de Matheus Henn, com experiência em desenvolvimento web, análise de dados, SEO e Agentes de IA.",
 
     siteName:
       "Matheus Henn — Portfolio",
@@ -77,7 +78,7 @@ export const metadata: Metadata = {
         height: 630,
 
         alt:
-          "Matheus Henn — Desenvolvedor Frontend e Analista de Dados",
+          "Matheus Henn — Desenvolvedor Full Stack Python/PHP e Analista de Dados",
       },
     ],
   },
@@ -86,10 +87,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
 
     title:
-      "Matheus Henn | Desenvolvedor Frontend & Analista de Dados",
+      "Matheus Henn | Desenvolvedor Full Stack Python/PHP & Analista de Dados",
 
     description:
-      "Portfólio profissional de Matheus Henn.",
+      "Portfólio profissional de Matheus Henn, com experiência em desenvolvimento full stack, análise de dados, SEO e Agentes de IA.",
 
     images: [
       "/og-image.jpg",

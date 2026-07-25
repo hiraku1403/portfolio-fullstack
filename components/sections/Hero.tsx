@@ -147,7 +147,7 @@ export function Hero() {
                     </p>
 
                     <p className="mt-1 font-semibold">
-                        React + Next.js
+                        React + Next.js + Python + Agentes de IA
                     </p>
                 </div>
 
@@ -157,7 +157,7 @@ export function Hero() {
                     </p>
 
                     <p className="mt-1 font-semibold">
-                        Performance & SEO
+                        Performance & Resultados
                     </p>
                 </div>
               </div>

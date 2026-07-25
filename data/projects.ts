@@ -20,6 +20,50 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "E-commerce AI Suite",
+
+    description:
+      "O E-commerce AI Suite é uma plataforma de inteligência preditiva para e-commerce que combina algoritmos de Machine Learning (Scikit-Learn) e Agentes de IA (Google Gemini) para analisar, em lote, a propensão de conversão de produtos e gerar diagnósticos acionáveis de CRO (Conversion Rate Optimization).",
+
+    category: "professional",
+
+    technologies: [
+      "Machine Learning",
+      "CRO ",
+      "FastAPI" ,
+      "Pydantic",
+       "Uvicorn",
+    ],
+
+    url: "https://ecommerce-ai-suite-1.vercel.app/",
+
+    image: "/projects/ecommerce-suite.jpg",
+
+    featured: true,
+  },
+    {
+    title: "Seo Machine Learning",
+
+    description:
+      "Um pipeline automatizado de Engenharia de Dados e Inteligência Artificial desenvolvido em Python, Pandas e o SDK do Google Gemini (gemini-2.5-flash).O projeto lê dados brutos de produtos de planilhas Excel, utiliza IA generativa para criar títulos otimizados para SEO e copies persuasivas focadas em conversão (CRO), e exporta um relatório estruturado pronto para uso em e-commerce e marketplaces.",
+
+    category: "professional",
+
+    technologies: [
+      "Python",
+      "Gemini ",
+      "FastAPI" ,
+      "Pydantic",
+      "Uvicorn",
+    ],
+
+    url: "https://github.com/hiraku1403/seo-machine-learning",
+
+    image: "/projects/seo-machine.jpg",
+
+    featured: true,
+  },
+  {
     title: "Natural Nuts",
 
     description:

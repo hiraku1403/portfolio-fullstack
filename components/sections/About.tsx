@@ -15,10 +15,10 @@ const areas = [
   {
     icon: Code2,
 
-    title: "Desenvolvimento Web",
+    title: "Desenvolvimento Full Stack",
 
     description:
-      "Construção de interfaces modernas, responsivas e performáticas utilizando tecnologias modernas do ecossistema JavaScript.",
+      "Construção de interfaces modernas, responsivas e performáticas utilizando tecnologias modernas do ecossistema Python e React JS.",
   },
 
   {
@@ -27,7 +27,7 @@ const areas = [
     title: "SEO & Performance",
 
     description:
-      "Experiência em otimização para mecanismos de busca, análise de dados e melhoria contínua da performance digital.",
+      "Experiência em otimização para mecanismos de busca, análise de dados e melhoria contínua da performance digital utilizando agentes de IA.",
   },
 
   {
@@ -42,10 +42,10 @@ const areas = [
   {
     icon: Lightbulb,
 
-    title: "Estratégia Digital",
+    title: "Agentes de IA",
 
     description:
-      "Interface entre tecnologia, marketing, produto e conteúdo para desenvolver soluções digitais orientadas a resultados.",
+      "Experiência em desenvolvimento e integração de agentes de IA para automação de processos, análise de dados e suporte à tomada de decisões.",
   },
 ];
 
@@ -59,7 +59,7 @@ export function About() {
         <SectionHeading
           eyebrow="Sobre mim"
           title="Tecnologia, estratégia e resultados."
-          description="Minha experiência combina desenvolvimento web, análise de dados, SEO e estratégia digital."
+          description="Minha experiência combina desenvolvimento full stack, análise de dados, SEO e Agentes de IA."
         />
 
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">

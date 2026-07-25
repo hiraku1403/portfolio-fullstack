@@ -20,6 +20,28 @@ export const courses: Course[] = [
     description:
       "Aprofundamento em desenvolvimento frontend moderno e tecnologias do ecossistema JavaScript.",
   },
+  {
+    title:
+      "Formação em Desenvolvimento Backend com Python",
+
+    institution: "EBAC",
+
+    year: "2026",
+
+    description:
+      "Desenvolvimento backend utilizando as tecnologias Django, FastAPI, SQLAlchemy e integração com bancos de dados relacionais e não relacionais.",
+  },
+  {
+    title:
+      "Análise de Dados com Python",
+
+    institution: "EBAC",
+
+    year: "2026",
+
+    description:
+      "Desenvolvimento backend utilizando as tecnologias Django, FastAPI, SQLAlchemy e integração com bancos de dados relacionais e não relacionais.",
+  },
 
   {
     title:
