@@ -26,11 +26,7 @@ export const metadata: Metadata = {
   },
 
   description:
-<<<<<<< HEAD
     "Portfólio de Matheus Henn — Desenvolvedor Full Stack Python/PHP, Analista de Dados e profissional de Marketing Digital. Especialista em Python, PHP, React, Next.js, JavaScript, SEO, Agentes de IA.",
-=======
-    "Portfólio de Matheus Henn — Desenvolvedor Full Stack Python/PHP, Analista de Dados e profissional de Marketing Digital. Especialista em Python, PHP, React, Next.js, JavaScript, SEO, Analytics e estratégias digitais.",
->>>>>>> 9bdedbdb30f6a3e1851d386f24ec68b280385f0b
 
   keywords: [
     "Matheus Henn",
