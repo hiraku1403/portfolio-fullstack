@@ -1,21 +1,21 @@
 export const stats = [
   {
-    value: "15+",
+    value: "10+",
     label: "Anos de experiência",
   },
 
   {
-    value: "10+",
+    value: "25+",
     label: "Projetos realizados",
   },
 
   {
-    value: "8+",
+    value: "16+",
     label: "Tecnologias utilizadas",
   },
 
   {
-    value: "35%",
-    label: "Aumento em cliques orgânicos",
+    value: "47%",
+    label: "Otimização de performance com IA",
   },
 ];
