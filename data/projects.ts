@@ -19,6 +19,70 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+      {
+    title: "Multimodal RAG with Gemini, Qdrant & FastAPI",
+
+    description:
+      "Este é um sistema RAG (Retrieval-Augmented Generation) avançado desenvolvido para upload, indexação e consulta inteligente de documentos PDF. O sistema combina busca vetorial no Qdrant Cloud, modelos locais de embedding (Sentence-Transformers) e a API do Google Gemini para responder perguntas com alta precisão e citações exatas de páginas.",
+    category: "professional",
+
+    technologies: [
+      "FastAPI: Backend RESTful assíncrono e de alta performance.",
+      "Qdrant Cloud: Banco de dados vetorial distribuído para busca de similaridade em escala.",
+      "Sentence-Transformers: Embeddings multilíngues locais (384-dim).",
+      "Google Gemini API (google-genai): Modelo de linguagem de última geração para síntese e geração de respostas.",
+      "PyPDF / pdfplumber: Processamento e extração de texto de PDFs."
+    ],
+
+    url: "https://multimodal-rag-suite.onrender.com",
+
+    image: "/projects/rag-multimodal.jpg",
+
+    featured: true,
+  },
+    {
+    title: "TikTok Clip Agent",
+
+    description:
+      "Agente de IA 100% local e gratuito que transforma vídeos longos do YouTube em cortes prontos para o TikTok (9:16), com Transcrição automática (Whisper), Detecção de hooks virais (Ollama / LLM local), Título fixo + legendas + CTA de afiliado incluídos no vídeo e Dois perfis de conteúdo com CTAs e prompts separados",
+    category: "professional",
+
+    technologies: [
+      "CrewAI: Orquestração multi-agente",
+      "LangChain: Integração com LLMs",
+      "FastAPI: API RESTful",
+      "llama3.2:3b",
+      "Gemini API"
+    ],
+
+    url: "https://github.com/hiraku1403/tiktok-clip-agent",
+
+    image: "/projects/tiktok-clip-agent.jpg",
+
+    featured: true,
+  },
+  {
+    title: "Multi-Agent SEO Platform",
+
+    description:
+      "Este projeto demonstra a orquestração de múltiplos agentes de IA trabalhando em conjunto para criar conteúdo otimizado para SEO.",
+
+    category: "professional",
+
+    technologies: [
+      "CrewAI: Orquestração multi-agente",
+      "LangChain: Integração com LLMs",
+      "FastAPI: API RESTful",
+      "Vercel: Deploy serverless",
+      "OpenAI GPT-4: Modelo principal"
+    ],
+
+    url: "https://multi-agent-seo-platform.vercel.app/",
+
+    image: "/projects/seo-content.jpg",
+
+    featured: true,
+  },
   {
     title: "E-commerce AI Suite",
 
