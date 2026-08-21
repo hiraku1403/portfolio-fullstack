@@ -1,116 +1,79 @@
-import {
-  BarChart3,
-  Code2,
-  Lightbulb,
-  Search,
-} from "lucide-react";
+import type { Locale } from "../../i18n/config";
+import { getDictionary } from "../../i18n/getDictionary";
 
-import { profile } from "../../data/profile";
+interface AboutProps {
+  locale: Locale;
+}
 
-import { AnimatedSection } from "../../components/ui/AnimatedSection";
+export function About({ locale }: AboutProps) {
+  const dict = getDictionary(locale);
 
-import { SectionHeading } from "../../components/ui/SectionHeading";
-
-const areas = [
-  {
-    icon: Code2,
-
-    title: "Desenvolvimento Full Stack",
-
-    description:
-      "Construção de interfaces modernas, responsivas e performáticas utilizando tecnologias modernas do ecossistema Python e React JS.",
-  },
-
-  {
-    icon: Search,
-
-    title: "SEO & Performance",
-
-    description:
-      "Experiência em otimização para mecanismos de busca, análise de dados e melhoria contínua da performance digital utilizando agentes de IA.",
-  },
-
-  {
-    icon: BarChart3,
-
-    title: "Analytics & Dados",
-
-    description:
-      "Utilização de dados para identificar oportunidades, acompanhar métricas e apoiar decisões estratégicas.",
-  },
-
-  {
-    icon: Lightbulb,
-
-    title: "Agentes de IA",
-
-    description:
-      "Experiência em desenvolvimento e integração de agentes de IA para automação de processos, análise de dados e suporte à tomada de decisões.",
-  },
-];
-
-export function About() {
   return (
     <section
-      id="sobre"
-      className="section-padding"
+      id="about"
+      className="py-16 sm:py-20"
     >
-      <div className="container-custom">
-        <SectionHeading
-          eyebrow="Sobre mim"
-          title="Tecnologia, estratégia e resultados."
-          description="Minha experiência combina desenvolvimento full stack, análise de dados, SEO e Agentes de IA."
-        />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-          <AnimatedSection>
-            <div className="space-y-6 text-muted">
-              <p className="text-lg leading-8">
-                {profile.bio}
-              </p>
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+            {dict.about.eyebrow}
+          </p>
 
-              <p className="leading-8">
-                Ao longo da minha trajetória profissional, desenvolvi
-                projetos para diferentes segmentos, passando por
-                e-commerce, sites institucionais, plataformas digitais
-                e estratégias de marketing.
-              </p>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            {dict.about.title}
+          </h2>
 
-              <p className="leading-8">
-                Atualmente, estou aprofundando meus conhecimentos em
-                React, Next.js, Python e Análise de Dados, buscando
-                constantemente evoluir tecnicamente e criar soluções
-                digitais cada vez melhores.
-              </p>
-            </div>
-          </AnimatedSection>
+          <p className="mt-6 text-base leading-7 text-muted sm:text-lg">
+            {dict.about.description}
+          </p>
+        </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {areas.map((area, index) => {
-              const Icon = area.icon;
+        {/* Text */}
+        <div className="mt-8 max-w-4xl space-y-5">
+          <p className="text-base leading-7 text-muted">
+            {dict.about.paragraph2}
+          </p>
 
-              return (
-                <AnimatedSection
-                  key={area.title}
-                  delay={index * 0.1}
-                >
-                  <div className="group h-full rounded-2xl border border-border bg-card/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl">
-                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-foreground">
-                      <Icon size={21} />
-                    </div>
+          <p className="text-base leading-7 text-muted">
+            {dict.about.paragraph3}
+          </p>
+        </div>
 
-                    <h3 className="font-semibold">
-                      {area.title}
-                    </h3>
+        {/* Highlights */}
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
 
-                    <p className="mt-3 text-sm leading-7 text-muted">
-                      {area.description}
-                    </p>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-base font-semibold">
+              {dict.about.highlight1.title}
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {dict.about.highlight1.description}
+            </p>
           </div>
+
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-base font-semibold">
+              {dict.about.highlight2.title}
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {dict.about.highlight2.description}
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-base font-semibold">
+              {dict.about.highlight3.title}
+            </h3>
+
+            <p className="mt-3 text-sm leading-6 text-muted">
+              {dict.about.highlight3.description}
+            </p>
+          </div>
+
         </div>
       </div>
     </section>

@@ -1,37 +1,72 @@
-import { AnimatedSection } from "../../components/ui/AnimatedSection";
+import type { Locale } from "../../i18n/config";
+import { getDictionary } from "../../i18n/getDictionary";
 
-import { SectionHeading } from "../../components/ui/SectionHeading";
+interface SkillsProps {
+  locale: Locale;
+}
 
-import { SkillCard } from "../../components/ui/SkillCard";
+export function Skills({ locale }: SkillsProps) {
+  const dict = getDictionary(locale);
 
-import { skillCategories } from "../../data/skills";
+  const categories = [
+    dict.skills.categories.backend,
+    dict.skills.categories.integrations,
+    dict.skills.categories.data,
+    dict.skills.categories.frontend,
+    dict.skills.categories.engineering,
+  ];
 
-export function Skills() {
   return (
     <section
-      id="competencias"
-      className="section-padding border-t border-border"
+      id="skills"
+      className="py-16 sm:py-20"
     >
-      <div className="container-custom">
-        <SectionHeading
-          eyebrow="Competências"
-          title="Uma combinação de tecnologia, dados e estratégia."
-          description="Minha experiência transita entre desenvolvimento full stack, análise de dados, SEO, marketing digital e gestão de projetos."
-        />
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {skillCategories.map(
-            (category, index) => (
-              <AnimatedSection
-                key={category.title}
-                delay={index * 0.08}
-              >
-                <SkillCard
-                  category={category}
-                />
-              </AnimatedSection>
-            ),
-          )}
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+            {dict.skills.eyebrow}
+          </p>
+
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+            {dict.skills.title}
+          </h2>
+
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted sm:text-lg">
+            {dict.skills.description}
+          </p>
+        </div>
+
+        {/* Skills */}
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {categories.map((content, index) => (
+            <article
+              key={index}
+              className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+            >
+              <div>
+                <h3 className="text-lg font-semibold">
+                  {content.title}
+                </h3>
+
+                <p className="mt-2 max-w-md text-sm leading-6 text-muted">
+                  {content.description}
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {content.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

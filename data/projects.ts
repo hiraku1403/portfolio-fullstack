@@ -3,9 +3,15 @@ export type ProjectCategory =
   | "study";
 
 export interface Project {
-  title: string;
+  title: {
+    pt: string;
+    en: string;
+  };
 
-  description: string;
+  description: {
+    pt: string;
+    en: string;
+  };
 
   category: ProjectCategory;
 
@@ -19,19 +25,27 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-      {
-    title: "Multimodal RAG with Gemini, Qdrant & FastAPI",
+  {
+    title: {
+      pt: "Multimodal RAG with Gemini, Qdrant & FastAPI",
+      en: "Multimodal RAG with Gemini, Qdrant & FastAPI",
+    },
 
-    description:
-      "Este é um sistema RAG (Retrieval-Augmented Generation) avançado desenvolvido para upload, indexação e consulta inteligente de documentos PDF. O sistema combina busca vetorial no Qdrant Cloud, modelos locais de embedding (Sentence-Transformers) e a API do Google Gemini para responder perguntas com alta precisão e citações exatas de páginas.",
+    description: {
+      pt: "Este é um sistema RAG (Retrieval-Augmented Generation) avançado desenvolvido para upload, indexação e consulta inteligente de documentos PDF. O sistema combina busca vetorial no Qdrant Cloud, modelos locais de embedding (Sentence-Transformers) e a API do Google Gemini para responder perguntas com alta precisão e citações exatas de páginas.",
+
+      en: "An advanced RAG (Retrieval-Augmented Generation) system developed for PDF document upload, indexing and intelligent querying. The system combines vector search with Qdrant Cloud, local embedding models using Sentence-Transformers, and the Google Gemini API to answer questions with high accuracy and exact page citations.",
+    },
+
     category: "professional",
 
     technologies: [
-      "FastAPI: Backend RESTful assíncrono e de alta performance.",
-      "Qdrant Cloud: Banco de dados vetorial distribuído para busca de similaridade em escala.",
-      "Sentence-Transformers: Embeddings multilíngues locais (384-dim).",
-      "Google Gemini API (google-genai): Modelo de linguagem de última geração para síntese e geração de respostas.",
-      "PyPDF / pdfplumber: Processamento e extração de texto de PDFs."
+      "FastAPI",
+      "Qdrant Cloud",
+      "Sentence-Transformers",
+      "Google Gemini API",
+      "PyPDF",
+      "pdfplumber",
     ],
 
     url: "https://multimodal-rag-suite.onrender.com",
@@ -40,19 +54,27 @@ export const projects: Project[] = [
 
     featured: true,
   },
-    {
-    title: "TikTok Clip Agent",
 
-    description:
-      "Agente de IA 100% local e gratuito que transforma vídeos longos do YouTube em cortes prontos para o TikTok (9:16), com Transcrição automática (Whisper), Detecção de hooks virais (Ollama / LLM local), Título fixo + legendas + CTA de afiliado incluídos no vídeo e Dois perfis de conteúdo com CTAs e prompts separados",
+  {
+    title: {
+      pt: "TikTok Clip Agent",
+      en: "TikTok Clip Agent",
+    },
+
+    description: {
+      pt: "Agente de IA 100% local e gratuito que transforma vídeos longos do YouTube em cortes prontos para o TikTok (9:16), com transcrição automática utilizando Whisper, detecção de hooks virais com Ollama e LLM local, título fixo, legendas, CTA de afiliado e dois perfis de conteúdo com CTAs e prompts separados.",
+
+      en: "A fully local and free AI agent that transforms long YouTube videos into TikTok-ready clips (9:16), featuring automatic transcription with Whisper, viral hook detection using Ollama and a local LLM, fixed titles, captions, affiliate CTAs, and two content profiles with separate CTAs and prompts.",
+    },
+
     category: "professional",
 
     technologies: [
-      "CrewAI: Orquestração multi-agente",
-      "LangChain: Integração com LLMs",
-      "FastAPI: API RESTful",
+      "CrewAI",
+      "LangChain",
+      "FastAPI",
       "llama3.2:3b",
-      "Gemini API"
+      "Gemini API",
     ],
 
     url: "https://github.com/hiraku1403/tiktok-clip-agent",
@@ -61,20 +83,27 @@ export const projects: Project[] = [
 
     featured: true,
   },
-  {
-    title: "Multi-Agent SEO Platform",
 
-    description:
-      "Este projeto demonstra a orquestração de múltiplos agentes de IA trabalhando em conjunto para criar conteúdo otimizado para SEO.",
+  {
+    title: {
+      pt: "Multi-Agent SEO Platform",
+      en: "Multi-Agent SEO Platform",
+    },
+
+    description: {
+      pt: "Este projeto demonstra a orquestração de múltiplos agentes de IA trabalhando em conjunto para criar conteúdo otimizado para SEO.",
+
+      en: "This project demonstrates the orchestration of multiple AI agents working together to create SEO-optimized content.",
+    },
 
     category: "professional",
 
     technologies: [
-      "CrewAI: Orquestração multi-agente",
-      "LangChain: Integração com LLMs",
-      "FastAPI: API RESTful",
-      "Vercel: Deploy serverless",
-      "OpenAI GPT-4: Modelo principal"
+      "CrewAI",
+      "LangChain",
+      "FastAPI",
+      "Vercel",
+      "OpenAI GPT-4",
     ],
 
     url: "https://multi-agent-seo-platform.vercel.app/",
@@ -83,20 +112,27 @@ export const projects: Project[] = [
 
     featured: true,
   },
-  {
-    title: "E-commerce AI Suite",
 
-    description:
-      "O E-commerce AI Suite é uma plataforma de inteligência preditiva para e-commerce que combina algoritmos de Machine Learning (Scikit-Learn) e Agentes de IA (Google Gemini) para analisar, em lote, a propensão de conversão de produtos e gerar diagnósticos acionáveis de CRO (Conversion Rate Optimization).",
+  {
+    title: {
+      pt: "E-commerce AI Suite",
+      en: "E-commerce AI Suite",
+    },
+
+    description: {
+      pt: "O E-commerce AI Suite é uma plataforma de inteligência preditiva para e-commerce que combina algoritmos de Machine Learning (Scikit-Learn) e Agentes de IA (Google Gemini) para analisar, em lote, a propensão de conversão de produtos e gerar diagnósticos acionáveis de CRO (Conversion Rate Optimization).",
+
+      en: "E-commerce AI Suite is a predictive intelligence platform for e-commerce that combines Machine Learning algorithms (Scikit-Learn) and AI Agents (Google Gemini) to analyze product conversion propensity in batches and generate actionable CRO (Conversion Rate Optimization) diagnostics.",
+    },
 
     category: "professional",
 
     technologies: [
       "Machine Learning",
-      "CRO ",
-      "FastAPI" ,
+      "CRO",
+      "FastAPI",
       "Pydantic",
-       "Uvicorn",
+      "Uvicorn",
     ],
 
     url: "https://ecommerce-ai-suite-1.vercel.app/",
@@ -105,18 +141,25 @@ export const projects: Project[] = [
 
     featured: true,
   },
-    {
-    title: "Seo Machine Learning",
 
-    description:
-      "Um pipeline automatizado de Engenharia de Dados e Inteligência Artificial desenvolvido em Python, Pandas e o SDK do Google Gemini (gemini-2.5-flash).O projeto lê dados brutos de produtos de planilhas Excel, utiliza IA generativa para criar títulos otimizados para SEO e copies persuasivas focadas em conversão (CRO), e exporta um relatório estruturado pronto para uso em e-commerce e marketplaces.",
+  {
+    title: {
+      pt: "SEO Machine Learning",
+      en: "SEO Machine Learning",
+    },
+
+    description: {
+      pt: "Um pipeline automatizado de Engenharia de Dados e Inteligência Artificial desenvolvido em Python, Pandas e o SDK do Google Gemini (gemini-2.5-flash). O projeto lê dados brutos de produtos de planilhas Excel, utiliza IA generativa para criar títulos otimizados para SEO e copies persuasivas focadas em conversão (CRO), e exporta um relatório estruturado pronto para uso em e-commerce e marketplaces.",
+
+      en: "An automated Data Engineering and Artificial Intelligence pipeline built with Python, Pandas and the Google Gemini SDK (gemini-2.5-flash). The project reads raw product data from Excel spreadsheets, uses generative AI to create SEO-optimized titles and persuasive conversion-focused copy (CRO), and exports a structured report ready for use in e-commerce and marketplaces.",
+    },
 
     category: "professional",
 
     technologies: [
       "Python",
-      "Gemini ",
-      "FastAPI" ,
+      "Gemini",
+      "FastAPI",
       "Pydantic",
       "Uvicorn",
     ],
@@ -127,11 +170,18 @@ export const projects: Project[] = [
 
     featured: true,
   },
-  {
-    title: "Natural Nuts",
 
-    description:
-      "Desenvolvimento de template de e-commerce para integração com a plataforma Shopify.",
+  {
+    title: {
+      pt: "Natural Nuts",
+      en: "Natural Nuts",
+    },
+
+    description: {
+      pt: "Desenvolvimento de template de e-commerce para integração com a plataforma Shopify.",
+
+      en: "Development of an e-commerce template integrated with the Shopify platform.",
+    },
 
     category: "professional",
 
@@ -150,10 +200,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "QIX Skate Shop",
+    title: {
+      pt: "QIX Skate Shop",
+      en: "QIX Skate Shop",
+    },
 
-    description:
-      "Desenvolvimento de template de e-commerce integrado à plataforma Magento.",
+    description: {
+      pt: "Desenvolvimento de template de e-commerce integrado à plataforma Magento.",
+
+      en: "Development of an e-commerce template integrated with the Magento platform.",
+    },
 
     category: "professional",
 
@@ -172,10 +228,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Chua Brand",
+    title: {
+      pt: "Chua Brand",
+      en: "Chua Brand",
+    },
 
-    description:
-      "Alteração e evolução de layout de e-commerce desenvolvido utilizando Python e React JS.",
+    description: {
+      pt: "Alteração e evolução de layout de e-commerce desenvolvido utilizando Python e React JS.",
+
+      en: "Layout improvements and further development of an e-commerce website built with Python and React JS.",
+    },
 
     category: "professional",
 
@@ -192,10 +254,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Grafiset",
+    title: {
+      pt: "Grafiset",
+      en: "Grafiset",
+    },
 
-    description:
-      "Desenvolvimento de frontend para site institucional.",
+    description: {
+      pt: "Desenvolvimento de frontend para site institucional.",
+
+      en: "Frontend development for a corporate website.",
+    },
 
     category: "professional",
 
@@ -211,10 +279,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Instituto da Transformação",
+    title: {
+      pt: "Instituto da Transformação",
+      en: "Instituto da Transformação",
+    },
 
-    description:
-      "Desenvolvimento de frontend e backend para site institucional utilizando PHP e React JS.",
+    description: {
+      pt: "Desenvolvimento de frontend e backend para site institucional utilizando PHP e React JS.",
+
+      en: "Frontend and backend development for a corporate website using PHP and React JS.",
+    },
 
     category: "professional",
 
@@ -230,10 +304,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Articles Next",
+    title: {
+      pt: "Articles Next",
+      en: "Articles Next",
+    },
 
-    description:
-      "Desenvolvimento de frontend para sistema de artigos utilizando Next.js, SCSS e React JS.",
+    description: {
+      pt: "Desenvolvimento de frontend para sistema de artigos utilizando Next.js, SCSS e React JS.",
+
+      en: "Frontend development for an articles platform using Next.js, SCSS and React JS.",
+    },
 
     category: "study",
 
@@ -251,10 +331,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Estratégia de Otimização de SEO",
+    title: {
+      pt: "Estratégia de Otimização de SEO",
+      en: "SEO Optimization Strategy",
+    },
 
-    description:
-      "Otimização de mecanismos de busca aplicando estratégias de SEO, resultando em aumento de 70% nas visualizações em comparação aos três meses anteriores.",
+    description: {
+      pt: "Otimização de mecanismos de busca aplicando estratégias de SEO, resultando em aumento de 70% nas visualizações em comparação aos três meses anteriores.",
+
+      en: "Search engine optimization using SEO strategies, resulting in a 70% increase in views compared to the previous three months.",
+    },
 
     category: "study",
 
@@ -270,10 +356,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Blog para E-commerce",
+    title: {
+      pt: "Blog para E-commerce",
+      en: "E-commerce Blog",
+    },
 
-    description:
-      "Desenvolvimento de estratégia de inbound marketing para blog de e-commerce, contribuindo para aumento de 20% na conversão.",
+    description: {
+      pt: "Desenvolvimento de estratégia de inbound marketing para blog de e-commerce, contribuindo para aumento de 20% na conversão.",
+
+      en: "Development of an inbound marketing strategy for an e-commerce blog, contributing to a 20% increase in conversion.",
+    },
 
     category: "study",
 
@@ -289,10 +381,16 @@ export const projects: Project[] = [
   },
 
   {
-    title: "Agência de Viagens",
+    title: {
+      pt: "Agência de Viagens",
+      en: "Travel Agency",
+    },
 
-    description:
-      "Desenvolvimento frontend para site de agência de viagens utilizando Next.js, SCSS e Node.js.",
+    description: {
+      pt: "Desenvolvimento frontend para site de agência de viagens utilizando Next.js, SCSS e Node.js.",
+
+      en: "Frontend development for a travel agency website using Next.js, SCSS and Node.js.",
+    },
 
     category: "study",
 

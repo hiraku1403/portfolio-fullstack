@@ -1,115 +1,108 @@
-"use client";
-
-import { useMemo, useState } from "react";
+import { projects } from "../../data/projects";
+import type { Locale } from "../../i18n/config";
+import { getDictionary } from "../../i18n/getDictionary";
 
 import { ProjectCard } from "../../components/ui/ProjectCard";
 
-import { AnimatedSection } from "../../components/ui/AnimatedSection";
+interface ProjectsProps {
+  locale: Locale;
+}
 
-import { SectionHeading } from "../../components/ui/SectionHeading";
+export function Projects({
+  locale,
+}: ProjectsProps) {
+  const dict = getDictionary(locale);
 
-import {
-  projects,
-  type ProjectCategory,
-} from "../../data/projects";
-
-type Filter = "all" | ProjectCategory;
-
-const filters: {
-  label: string;
-  value: Filter;
-}[] = [
-  {
-    label: "Todos",
-    value: "all",
-  },
-
-  {
-    label: "Profissionais",
-    value: "professional",
-  },
-
-  {
-    label: "Estudos",
-    value: "study",
-  },
-];
-
-export function Projects() {
-  const [activeFilter, setActiveFilter] =
-    useState<Filter>("all");
-
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "all") {
-      return projects;
-    }
-
-    return projects.filter(
+  const professionalProjects =
+    projects.filter(
       (project) =>
-        project.category === activeFilter,
+        project.category === "professional"
     );
-  }, [activeFilter]);
+
+  const studyProjects =
+    projects.filter(
+      (project) =>
+        project.category === "study"
+    );
 
   return (
     <section
-      id="projetos"
-      className="section-padding border-t border-border"
+      id="projects"
+      className="relative py-24 sm:py-32"
     >
-      <div className="container-custom">
-        <SectionHeading
-          eyebrow="Projetos"
-          title="Projetos que transformam ideias em experiências digitais."
-          description="Uma seleção de projetos profissionais e estudos desenvolvidos ao longo da minha trajetória."
-        />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div className="mb-10 flex flex-wrap gap-2">
-          {filters.map((filter) => {
-            const isActive =
-              activeFilter === filter.value;
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+            {dict.projects.eyebrow}
+          </p>
 
-            return (
-              <button
-                key={filter.value}
-                type="button"
-                onClick={() =>
-                  setActiveFilter(filter.value)
-                }
-                className={`
-                  rounded-full
-                  px-4
-                  py-2
-                  text-sm
-                  font-medium
-                  transition-all
-                  ${
-                    isActive
-                      ? "bg-foreground text-background"
-                      : "bg-secondary text-muted hover:text-foreground"
-                  }
-                `}
-              >
-                {filter.label}
-              </button>
-            );
-          })}
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {dict.projects.title}
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
+            {dict.projects.description}
+          </p>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {filteredProjects.map(
-            (project, index) => (
-              <AnimatedSection
-                key={project.title}
-                delay={index * 0.08}
-              >
+        {/* Professional projects */}
+        <div className="mt-16">
+          <div className="grid gap-6 md:grid-cols-2">
+            {professionalProjects.map(
+              (project) => (
                 <ProjectCard
+                  key={project.url}
                   project={project}
-                  featured={project.featured}
+                  locale={locale}
+                  viewProject={
+                    dict.projects.viewProject
+                  }
                 />
-              </AnimatedSection>
-            ),
-          )}
+              )
+            )}
+          </div>
         </div>
+
+        {/* Study projects */}
+        {studyProjects.length > 0 && (
+          <div className="mt-20">
+            <div className="mb-8">
+              <h3 className="text-2xl font-semibold">
+                {locale === "pt"
+                  ? "Projetos de estudo"
+                  : "Study projects"}
+              </h3>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {studyProjects.map(
+                (project) => (
+                  <ProjectCard
+                    key={project.url}
+                    project={project}
+                    locale={locale}
+                    viewProject={
+                      dict.projects.viewProject
+                    }
+                  />
+                )
+              )}
+            </div>
+          </div>
+        )}
       </div>
+      <div className="mt-12 flex justify-center">
+  <a
+    href="https://github.com/hiraku1403/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center rounded-xl border border-border bg-card px-6 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+  >
+    {dict.projects.viewMore}
+  </a>
+</div>
     </section>
   );
 }

@@ -1,209 +1,160 @@
 "use client";
 
-import {
-  ArrowDown,
-  ArrowRight,
-  Download,
-  MapPin,
-} from "lucide-react";
+import Link from "next/link";
 
-import { motion } from "framer-motion";
+import type { Locale } from "../../i18n/config";
+import { getDictionary } from "../../i18n/getDictionary";
 
-import { profile } from "../../data/profile";
+interface HeroProps {
+  locale: Locale;
+}
 
-import { stats } from "../../data/stats";
+export function Hero({
+  locale,
+}: HeroProps) {
+  const dict = getDictionary(locale);
 
-import { AnimatedSection } from "../ui/AnimatedSection";
-
-import { Badge } from "../ui/Badge";
-
-import { Button } from "../ui/Button";
-
-export function Hero() {
   return (
     <section
-      id="inicio"
-      className="
-        relative
-        flex
-        min-h-screen
-        items-center
-        overflow-hidden
-        pt-32
-        pb-20
-      "
+      id="home"
+      className="relative overflow-hidden py-20 sm:py-24 lg:py-28"
     >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-[120px]" />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
 
-        <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-purple-500/10 blur-[120px]" />
-      </div>
+          {/* Content */}
+          <div className="max-w-3xl">
 
-      <div className="container-custom">
-        <div className="grid items-center gap-16 lg:grid-cols-[1.2fr_0.8fr]">
-          
-          <div>
-            <AnimatedSection>
-              <Badge className="mb-6">
-                <span className="mr-2 h-2 w-2 rounded-full bg-green-500" />
+            <div className="mb-6 inline-flex items-center rounded-full border border-border bg-secondary px-4 py-2 text-sm text-muted">
+              <span className="mr-2 h-2 w-2 rounded-full bg-foreground" />
 
-                {profile.availability}
-              </Badge>
-            </AnimatedSection>
+              {dict.hero.availability}
+            </div>
 
-            <AnimatedSection delay={0.1}>
-              <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-muted">
-                Olá, eu sou
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+              {dict.hero.role}
+            </p>
+
+            <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              {dict.hero.title}
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
+              {dict.hero.description}
+            </p>
+
+            {/* Actions */}
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link
+                href="#projects"
+                className="rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+              >
+                {dict.hero.projectsButton}
+              </Link>
+
+              <Link
+                href="#contact"
+                className="rounded-xl border border-border bg-card px-5 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+              >
+                {dict.hero.contactButton}
+              </Link>
+            </div>
+
+            {/* Technologies */}
+            <div className="mt-10">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                {dict.hero.stackLabel}
               </p>
-            </AnimatedSection>
 
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-8xl">
-  {profile.name.split(" ")[0]}
-
-  <br />
-
-  <span className="gradient-text">
-    {profile.name
-      .split(" ")
-      .slice(-2)
-      .join(" ")}
-  </span>
-</h1>
-
-            <AnimatedSection delay={0.3}>
-              <h2 className="mt-6 text-xl font-medium text-muted sm:text-2xl">
-                {profile.role}
-              </h2>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.4}>
-              <p className="mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg">
-                {profile.description}
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.5}>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button
-                  href="#projetos"
-                  className="group"
-                >
-                  Ver meus projetos
-
-                  <ArrowRight
-                    size={18}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </Button>
-
-                <Button
-                  href="/resume.pdf"
-                  variant="secondary"
-                  download
-                >
-                  <Download size={18} />
-
-                  Download CV
-                </Button>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  "Python",
+                  "FastAPI",
+                  "Django",
+                  "SQL",
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "AI / LLM",
+                ].map((technology) => (
+                  <span
+                    key={technology}
+                    className="rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium"
+                  >
+                    {technology}
+                  </span>
+                ))}
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.6}>
-              <div className="mt-8 flex items-center gap-2 text-sm text-muted">
-                <MapPin size={16} />
-
-                {profile.location}
-              </div>
-            </AnimatedSection>
+            </div>
           </div>
 
-          <AnimatedSection
-            delay={0.3}
-            className="relative"
-          >
-            <div className="relative mx-auto aspect-square max-w-md">
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-indigo-500/20 via-purple-500/10 to-pink-500/20 blur-2xl" />
+          {/* Visual */}
+          <div className="relative mx-auto w-full max-w-md lg:ml-auto">
 
-              <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[2rem] border border-border bg-card/60 p-8 backdrop-blur-xl">
-                <div className="absolute inset-0 grid-background opacity-50" />
+            <div className="relative aspect-square rounded-3xl border border-border bg-secondary p-6 shadow-xl">
 
-                <div className="relative z-10 text-center">
-                  <div className="mx-auto mb-6 flex h-32 w-32 items-center justify-center rounded-full border border-border bg-secondary text-4xl font-bold">
-                    MH
+              <div className="absolute inset-6 rounded-2xl border border-border bg-card" />
+
+              <div className="relative z-10 flex h-full flex-col justify-center p-6">
+
+                <p className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
+                  {dict.hero.profileLabel}
+                </p>
+
+                <h2 className="mt-3 text-2xl font-bold">
+                  Matheus Henn
+                </h2>
+
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  {dict.hero.profileDescription}
+                </p>
+
+                <div className="mt-8 grid grid-cols-2 gap-3">
+                  <div className="rounded-xl border border-border bg-background p-4">
+                    <p className="text-xs text-muted">
+                      Backend
+                    </p>
+
+                    <p className="mt-1 font-semibold">
+                      Python
+                    </p>
                   </div>
 
-                  <p className="text-lg font-semibold">
-                    {profile.shortName}
-                  </p>
-
-                  <p className="mt-2 text-sm text-muted">
-                    {profile.role}
-                  </p>
-                </div>
-
-                <div className="absolute left-1/2 top-10 -translate-x-1/2 rounded-xl border border-border bg-card px-4 py-3 text-center shadow-xl">
+                  <div className="rounded-xl border border-border bg-background p-4">
                     <p className="text-xs text-muted">
-                        Stack principal
+                      Full Stack
                     </p>
 
                     <p className="mt-1 font-semibold">
-                        React + Next.js + Python + Agentes de IA
+                      React + Next.js
                     </p>
-                </div>
+                  </div>
 
-                <div className="absolute bottom-8 left-1/2 z-20 w-max -translate-x-1/2 rounded-xl border border-border bg-card px-4 py-3 text-center shadow-xl">
+                  <div className="rounded-xl border border-border bg-background p-4">
                     <p className="text-xs text-muted">
-                        Foco
+                      APIs
                     </p>
 
                     <p className="mt-1 font-semibold">
-                        Performance & Resultados
+                      FastAPI
                     </p>
+                  </div>
+
+                  <div className="rounded-xl border border-border bg-background p-4">
+                    <p className="text-xs text-muted">
+                      AI
+                    </p>
+
+                    <p className="mt-1 font-semibold">
+                      LLMs & Agents
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </AnimatedSection>
-        </div>
-
-        <AnimatedSection delay={0.7}>
-          <div className="mt-20 grid grid-cols-2 gap-4 border-t border-border pt-8 md:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="text-center md:text-left"
-              >
-                <p className="text-2xl font-bold sm:text-3xl">
-                  {stat.value}
-                </p>
-
-                <p className="mt-2 text-xs text-muted sm:text-sm">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
           </div>
-        </AnimatedSection>
 
-        <motion.a
-          href="#sobre"
-          initial={{
-            opacity: 0,
-          }}
-          animate={{
-            opacity: 1,
-          }}
-          transition={{
-            delay: 1.5,
-          }}
-          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-muted md:flex"
-        >
-          Scroll para explorar
-
-          <ArrowDown
-            size={16}
-            className="animate-bounce"
-          />
-        </motion.a>
+        </div>
       </div>
     </section>
   );

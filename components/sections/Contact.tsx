@@ -1,149 +1,203 @@
+"use client";
+
 import {
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+  FormEvent,
+  useState,
+} from "react";
 
-import { profile } from "../../data/profile";
+import type { Locale } from "../../i18n/config";
+import { getDictionary } from "../../i18n/getDictionary";
 
-import { AnimatedSection } from "../../components/ui/AnimatedSection";
+type ContactProps = {
+  locale: Locale;
+};
 
-import { ContactForm } from "../../components/ui/ContactForm";
+export function Contact({
+  locale,
+}: ContactProps) {
+  const dict = getDictionary(locale);
 
-import { SectionHeading } from "../../components/ui/SectionHeading";
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] =
+    useState("");
 
-export function Contact() {
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>
+  ) {
+    event.preventDefault();
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const response = await fetch(
+        "/api/contact",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            locale,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "Failed to send message"
+        );
+      }
+
+      setName("");
+      setEmail("");
+      setMessage("");
+
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <section
-      id="contato"
-      className="section-padding border-t border-border"
+      id="contact"
+      className="relative py-24 sm:py-32"
     >
-      <div className="container-custom">
-        <SectionHeading
-          eyebrow="Contato"
-          title="Vamos conversar?"
-          description="Se você tem uma oportunidade, projeto ou simplesmente quer trocar uma ideia, envie uma mensagem."
-        />
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
-          <AnimatedSection>
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl font-bold">
-                  Entre em contato
-                </h3>
+        {/* Header */}
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">
+            {dict.contact.eyebrow}
+          </p>
 
-                <p className="mt-4 leading-8 text-muted">
-                  Estou aberto a conversar sobre novas oportunidades profissionais, projetos digitais, desenvolvimento web e estratégias de crescimento.
-                </p>
-              </div>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+            {dict.contact.title}
+          </h2>
 
-              <div className="space-y-4">
-                <a
-                  href={`mailto:${profile.email}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <Mail size={19} />
-                  </div>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
+            {dict.contact.description}
+          </p>
+        </div>
 
-                  <div>
-                    <p className="text-xs text-muted">
-                      E-mail
-                    </p>
+        {/* Form */}
+        <div className="mx-auto mt-16 max-w-2xl">
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8"
+          >
+            {/* Name */}
+            <div>
+              <label
+                htmlFor="contact-name"
+                className="text-sm font-medium"
+              >
+                {dict.contact.form.name}
+              </label>
 
-                    <p className="mt-1 text-sm font-medium">
-                      {profile.email}
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href={`tel:${profile.phone.replace(
-                    /\D/g,
-                    "",
-                  )}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <Phone size={19} />
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-muted">
-                      Telefone
-                    </p>
-
-                    <p className="mt-1 text-sm font-medium">
-                      {profile.phone}
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/matheus-henn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <span className="text-sm font-bold">
-                      in
-                    </span>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-muted">
-                      LinkedIn
-                    </p>
-
-                    <p className="mt-1 text-sm font-medium">
-                      linkedin.com/in/matheus-henn
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href="https://github.com/hiraku1403"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-2xl border border-border bg-card/50 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg"
-                >
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-secondary transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <span className="text-sm font-bold">
-                      GH
-                    </span>
-                  </div>
-
-                  <div>
-                    <p className="text-xs text-muted">
-                      GitHub
-                    </p>
-
-                    <p className="mt-1 text-sm font-medium">
-                      github.com/hiraku1403
-                    </p>
-                  </div>
-                </a>
-              </div>
-
-              <div className="flex items-center gap-3 text-sm text-muted">
-                <MapPin size={17} />
-
-                {profile.location}
-              </div>
+              <input
+                id="contact-name"
+                type="text"
+                value={name}
+                onChange={(event) =>
+                  setName(event.target.value)
+                }
+                placeholder={
+                  dict.contact.form.namePlaceholder
+                }
+                className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-foreground"
+              />
             </div>
-          </AnimatedSection>
 
-          <AnimatedSection delay={0.15}>
-            <div className="rounded-3xl border border-border bg-card/50 p-6 sm:p-8">
-              <h3 className="mb-6 text-xl font-bold">
-                Envie uma mensagem
-              </h3>
+            {/* Email */}
+            <div className="mt-5">
+              <label
+                htmlFor="contact-email"
+                className="text-sm font-medium"
+              >
+                {dict.contact.form.email}
+              </label>
 
-              <ContactForm />
+              <input
+                id="contact-email"
+                type="email"
+                value={email}
+                onChange={(event) =>
+                  setEmail(event.target.value)
+                }
+                placeholder={
+                  dict.contact.form.emailPlaceholder
+                }
+                className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-foreground"
+              />
             </div>
-          </AnimatedSection>
+
+            {/* Message */}
+            <div className="mt-5">
+              <label
+                htmlFor="contact-message"
+                className="text-sm font-medium"
+              >
+                {dict.contact.form.message}
+              </label>
+
+              <textarea
+                id="contact-message"
+                value={message}
+                onChange={(event) =>
+                  setMessage(event.target.value)
+                }
+                placeholder={
+                  dict.contact.form.messagePlaceholder
+                }
+                rows={6}
+                className="mt-2 w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-foreground"
+              />
+            </div>
+
+            {/* Status */}
+            {status === "success" && (
+              <div className="mt-5 rounded-xl border border-border bg-secondary px-4 py-3 text-sm">
+                {dict.contact.success}
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="mt-5 rounded-xl border border-border bg-secondary px-4 py-3 text-sm">
+                {!name.trim() ||
+                !email.trim() ||
+                !message.trim()
+                  ? dict.contact.required
+                  : dict.contact.error}
+              </div>
+            )}
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="mt-6 w-full rounded-xl bg-foreground px-5 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {status === "sending"
+                ? dict.contact.form.sending
+                : dict.contact.form.submit}
+            </button>
+          </form>
         </div>
       </div>
     </section>

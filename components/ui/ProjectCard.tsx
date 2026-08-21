@@ -1,114 +1,78 @@
 import Image from "next/image";
+import Link from "next/link";
 
-import {
-  ArrowUpRight,
-  ExternalLink,
-} from "lucide-react";
-
+import type { Locale } from "../../i18n/config";
 import type { Project } from "../../data/projects";
 
 interface ProjectCardProps {
   project: Project;
-  featured?: boolean;
+  locale: Locale;
+  viewProject: string;
 }
 
 export function ProjectCard({
   project,
-  featured = false,
+  locale,
+  viewProject,
 }: ProjectCardProps) {
+  const title = project.title[locale];
+  const description = project.description[locale];
+
   return (
-    <article
-      className={`
-        group
-        overflow-hidden
-        rounded-3xl
-        border
-        border-border
-        bg-card/50
-        transition-all
-        duration-500
-        hover:-translate-y-2
-        hover:border-foreground/20
-        hover:shadow-2xl
-        ${
-          featured
-            ? "lg:col-span-2"
-            : ""
-        }
-      `}
-    >
-      <div
-        className={`
-          relative
-          overflow-hidden
-          bg-secondary
-          ${
-            featured
-              ? "aspect-[2/1]"
-              : "aspect-video"
-          }
-        `}
-      >
+    <article className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+      {/* Project image */}
+      <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
         <Image
           src={project.image}
-          alt={`Imagem do projeto ${project.title}`}
+          alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Visitar projeto ${project.title}`}
-          className="absolute right-5 top-5 flex h-11 w-11 translate-y-2 items-center justify-center rounded-full bg-white text-black opacity-0 shadow-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
-        >
-          <ArrowUpRight size={19} />
-        </a>
       </div>
 
-      <div className="p-6 sm:p-8">
+      {/* Project content */}
+      <div className="p-6 sm:p-7">
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted">
-              {project.category === "professional"
-                ? "Projeto profissional"
-                : "Projeto de estudo"}
-            </p>
+          <h3 className="text-xl font-bold">
+            {title}
+          </h3>
 
-            <h3 className="text-xl font-bold">
-              {project.title}
-            </h3>
-          </div>
-
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Abrir ${project.title}`}
-            className="shrink-0 rounded-full border border-border p-2 text-muted transition-colors hover:bg-secondary hover:text-foreground"
-          >
-            <ExternalLink size={16} />
-          </a>
+          {project.featured && (
+            <span className="shrink-0 rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium">
+              Featured
+            </span>
+          )}
         </div>
 
-        <p className="mt-4 text-sm leading-7 text-muted">
-          {project.description}
+        <p className="mt-3 text-sm leading-6 text-muted">
+          {description}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        {/* Technologies */}
+        <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map(
             (technology) => (
               <span
                 key={technology}
-                className="rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-muted"
+                className="rounded-lg border border-border bg-background px-3 py-1.5 text-xs font-medium text-muted"
               >
                 {technology}
               </span>
-            ),
+            )
           )}
+        </div>
+
+        {/* Project link */}
+        <div className="mt-6">
+          <Link
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-xl bg-foreground px-4 py-2.5 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+          >
+            {viewProject}
+          </Link>
         </div>
       </div>
     </article>
