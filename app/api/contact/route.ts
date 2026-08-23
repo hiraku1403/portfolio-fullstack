@@ -1,29 +1,24 @@
 import { NextResponse } from "next/server";
-
 import { Resend } from "resend";
 
-const resend = new Resend(
-  process.env.RESEND_API_KEY,
-);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(
-  request: Request,
-) {
+export async function POST(request: Request) {
   try {
     const body = await request.json();
 
     const {
       name,
       email,
-      subject,
       message,
+      locale,
     } = body;
 
+    // Validação dos campos obrigatórios
     if (
-      !name ||
-      !email ||
-      !subject ||
-      !message
+      !name?.trim() ||
+      !email?.trim() ||
+      !message?.trim()
     ) {
       return NextResponse.json(
         {
@@ -36,6 +31,13 @@ export async function POST(
       );
     }
 
+    // Define o idioma do e-mail
+    const isEnglish = locale === "en";
+
+    const emailSubject = isEnglish
+      ? `New portfolio contact from ${name}`
+      : `Novo contato pelo portfólio de ${name}`;
+
     const emailResponse =
       await resend.emails.send({
         from:
@@ -47,34 +49,59 @@ export async function POST(
 
         replyTo: email,
 
-        subject: `[Portfolio] ${subject}`,
+        subject: emailSubject,
 
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 680px; margin: 0 auto; padding: 32px;">
-            
-            <h1 style="font-size: 24px; margin-bottom: 24px;">
-              Nova mensagem do seu portfólio
+          <div
+            style="
+              font-family: Arial, sans-serif;
+              max-width: 680px;
+              margin: 0 auto;
+              padding: 32px;
+              color: #111;
+            "
+          >
+
+            <h1
+              style="
+                font-size: 24px;
+                margin-bottom: 24px;
+              "
+            >
+              ${
+                isEnglish
+                  ? "New message from your portfolio"
+                  : "Nova mensagem do seu portfólio"
+              }
             </h1>
 
             <div style="margin-bottom: 20px;">
-              <strong>Nome:</strong>
-              <p>${name}</p>
+              <strong>
+                ${isEnglish ? "Name" : "Nome"}:
+              </strong>
+
+              <p>
+                ${escapeHtml(name)}
+              </p>
             </div>
 
             <div style="margin-bottom: 20px;">
-              <strong>E-mail:</strong>
-              <p>${email}</p>
+              <strong>
+                ${isEnglish ? "Email" : "E-mail"}:
+              </strong>
+
+              <p>
+                ${escapeHtml(email)}
+              </p>
             </div>
 
             <div style="margin-bottom: 20px;">
-              <strong>Assunto:</strong>
-              <p>${subject}</p>
-            </div>
+              <strong>
+                ${isEnglish ? "Message" : "Mensagem"}:
+              </strong>
 
-            <div style="margin-bottom: 20px;">
-              <strong>Mensagem:</strong>
               <p style="white-space: pre-line;">
-                ${message}
+                ${escapeHtml(message)}
               </p>
             </div>
 
@@ -83,6 +110,11 @@ export async function POST(
       });
 
     if (emailResponse.error) {
+      console.error(
+        "RESEND_ERROR:",
+        emailResponse.error,
+      );
+
       return NextResponse.json(
         {
           error:
@@ -121,4 +153,18 @@ export async function POST(
       },
     );
   }
+}
+
+/**
+ * Escapa caracteres HTML para evitar
+ * que conteúdo enviado pelo formulário
+ * seja interpretado como HTML no e-mail.
+ */
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
